@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wings for Life World Run – Oslo/Fornebu 2026</title>
+  <meta name="description" content="Bli med på Wings for Life World Run 2026 i Oslo/Fornebu – vi løper for de som ikke kan. 100% av påmeldingsavgiften går til ryggmargsforskning." />
+
+  <style>
+    :root{
+      --bg: #070A12;
+      --card: rgba(255,255,255,.08);
+      --card2: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --line: rgba(255,255,255,.14);
+      --accent: #FFD400;    /* “Wings”-gul vibe */
+      --accent2:#7C3AED;    /* lilla */
+      --accent3:#22C55E;    /* grønn */
+      --radius: 20px;
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --max: 1050px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 15% -10%, rgba(124,58,237,.55), transparent 60%),
+        radial-gradient(1200px 900px at 90% 10%, rgba(255,212,0,.40), transparent 55%),
+        radial-gradient(900px 700px at 55% 110%, rgba(34,197,94,.35), transparent 55%),
+        var(--bg);
+    }
+
+    a{ color:inherit; }
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 22px; }
+
+    /* Topbar */
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 14px;
+      padding: 14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px;
+    }
+    .dot{
+      width: 12px; height: 12px; border-radius: 99px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(255,212,0,.08);
+    }
+    .nav{
+      display:flex; gap: 12px; flex-wrap:wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a{ text-decoration:none; padding: 8px 10px; border-radius: 999px; }
+    .nav a:hover{ background: rgba(255,255,255,.08); color: var(--text); }
+
+    /* Hero */
+    .hero{
+      margin-top: 10px;
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 8px);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(600px 220px at 10% 10%, rgba(255,212,0,.20), transparent 60%),
+        radial-gradient(600px 240px at 85% 20%, rgba(124,58,237,.25), transparent 62%),
+        radial-gradient(600px 260px at 50% 100%, rgba(34,197,94,.22), transparent 60%);
+      pointer-events:none;
+    }
+
+    .hero-inner{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      padding: 28px;
+    }
+    @media (max-width: 860px){
+      .hero-inner{ grid-template-columns: 1fr; }
+    }
+    .badge{
+      display:inline-flex; gap:10px; align-items:center;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      width: fit-content;
+    }
+    .badge b{ color: var(--text); }
+
+    h1{
+      margin: 14px 0 8px;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -0.8px;
+    }
+    .lead{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.55;
+      max-width: 62ch;
+    }
+
+    .cta-row{ display:flex; gap: 12px; flex-wrap:wrap; align-items:center; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      text-decoration:none;
+      font-weight: 700;
+      transition: transform .08s ease, background .15s ease;
+      background: rgba(255,255,255,.06);
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); }
+    .btn-primary{
+      border-color: rgba(255,212,0,.55);
+      background: linear-gradient(135deg, rgba(255,212,0,.95), rgba(255,212,0,.75));
+      color: rgba(0,0,0,.90);
+    }
+    .btn-primary:hover{ background: linear-gradient(135deg, rgba(255,212,0,1), rgba(255,212,0,.82)); }
+    .mini{
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .side{
+      display:flex; flex-direction:column; gap: 12px;
+    }
+    .card{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .card h3{ margin:0 0 6px; font-size: 16px; }
+    .card p{ margin: 0; color: var(--muted); line-height: 1.55; }
+    .pill-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .pill strong{ color: var(--text); }
+
+    /* Sections */
+    section{ margin-top: 22px; }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .col-6{ grid-column: span 6; }
+    .col-4{ grid-column: span 4; }
+    .col-8{ grid-column: span 8; }
+    .col-12{ grid-column: span 12; }
+    @media (max-width: 900px){
+      .col-6, .col-4, .col-8{ grid-column: span 12; }
+    }
+
+    .panel{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      padding: 18px;
+    }
+
+    h2{
+      margin: 0 0 10px;
+      letter-spacing: -0.4px;
+    }
+    .muted{ color: var(--muted); }
+
+    .list{
+      margin: 10px 0 0;
+      padding: 0;
+      list-style:none;
+      display:grid;
+      gap: 10px;
+    }
+    .li{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      border-radius: 14px;
+      padding: 12px 12px;
+      display:flex; gap: 12px;
+      align-items:flex-start;
+    }
+    .k{
+      flex:0 0 auto;
+      width: 34px; height: 34px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(124,58,237,.85), rgba(255,212,0,.65));
+      display:flex; align-items:center; justify-content:center;
+      color: rgba(0,0,0,.85);
+      font-weight: 900;
+    }
+
+    /* Image placeholders */
+    .img{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background: rgba(255,255,255,.05);
+      position:relative;
+      min-height: 220px;
+    }
+    .img img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      opacity:.95;
+    }
+    .img .cap{
+      position:absolute; left: 12px; bottom: 12px;
+      background: rgba(0,0,0,.45);
+      border:1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.92);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      backdrop-filter: blur(6px);
+    }
+
+    footer{
+      margin: 22px 0 8px;
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items:center;
+    }
+    .small-links a{ color: var(--muted); text-decoration:none; }
+    .small-links a:hover{ color: var(--text); text-decoration:underline; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand"><span class="dot"></span> Oslo/Fornebu · WFL World Run 2026</div>
+      <div class="nav">
+        <a href="#info">Info</a>
+        <a href="#stedtid">Sted & tid</a>
+        <a href="#avgift">Påmelding</a>
+        <a href="#program">Program</a>
+        <a href="#praktisk">Praktisk</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="badge">
+            <span>🏁</span>
+            <span><b>Søndag 10. mai 2026</b> · Oslo/Fornebu</span>
+          </div>
+          <h1>Vi løper for de som ikke kan.</h1>
+          <p class="lead">
+            Bli med på <b>Wings for Life World Run</b> i Fornebu – et unikt globalt løp der “målstreken” jager deg.
+            Du kan <b>gå, løpe eller rulle</b>. Målet er felles: støtte ryggmargsforskning.
+          </p>
+
+          <div class="cta-row">
+            <!-- Bytt gjerne lenken til din foretrukne påmeldingsside (offisiell) -->
+            <a class="btn btn-primary" href="https://www.wingsforlifeworldrun.com/en/locations/oslo-fornebu" target="_blank" rel="noopener">
+              Meld deg på (offisiell) →
+            </a>
+            <a class="btn" href="#program">Se program</a>
+            <span class="mini">100% av påmeldingsavgift/donasjoner går til forskning.</span>
+          </div>
+
+          <div class="pill-row">
+            <span class="pill">📍 <strong>Fornebu</strong> (Oslo-området)</span>
+            <span class="pill">🕐 <strong>Start</strong> [SETT INN LOKAL STARTTID]</span>
+            <span class="pill">♿ <strong>Rullestol</strong> velkommen</span>
+          </div>
+        </div>
+
+        <div class="side">
+          <div class="card">
+            <h3>Hva gjør dette løpet annerledes?</h3>
+            <p>
+              I stedet for en fast målgang starter en <b>virtuell “Catcher Car”</b> etter løpet har begynt og tar deg igjen.
+              Du løper så langt du klarer før du blir “fanget”.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Del dette med en QR-kode</h3>
+            <p>
+              Perfekt for plakater, stand, kontor eller vennegjengen.
+              Lag QR-kode til denne siden når du har publisert den på GitHub Pages.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INFO -->
+    <section id="info" class="grid">
+      <div class="panel col-6">
+        <h2>Hva er Wings for Life World Run?</h2>
+        <p class="muted">
+          Et globalt løp der alle starter samtidig – uansett om du løper alene med appen eller sammen på et App Run Event.
+          Inntekten går til å finne en kur mot ryggmargsskader.
+        </p>
+        <ul class="list">
+          <li class="li"><span class="k">1</span><div><b>Alle kan være med</b><div class="muted">Gå, jogg, løp eller rullestol – du bestemmer tempo.</div></div></li>
+          <li class="li"><span class="k">2</span><div><b>Ingen fast målgang</b><div class="muted">Den virtuelle Catcher Car tar deg igjen – hvor langt rekker du?</div></div></li>
+          <li class="li"><span class="k">3</span><div><b>100% til forskning</b><div class="muted">Påmeldingsavgift/donasjoner går direkte til ryggmargsforskning.</div></div></li>
+        </ul>
+      </div>
+
+      <div class="col-6">
+        <div class="img" aria-label="Bilde">
+          <!-- LEGG INN DITT EGET BILDE:
+               1) lag mappen assets/
+               2) last opp f.eks. assets/fornebu.jpg
+               3) sett src="assets/fornebu.jpg"
+          -->
+          <img src="assets/fornebu.jpg" alt="Fornebu / Oslo-området (legg inn ditt bilde)" onerror="this.style.display='none'; this.parentElement.style.minHeight='240px'; this.parentElement.style.display='grid'; this.parentElement.style.placeItems='center'; this.parentElement.style.color='rgba(255,255,255,.7)'; this.parentElement.innerHTML='(Legg inn bilde: assets/fornebu.jpg)';">
+          <div class="cap">📸 [Bildetekst: f.eks. Fornebu – samlingspunkt]</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STED & TID -->
+    <section id="stedtid" class="grid">
+      <div class="panel col-8">
+        <h2>Sted & tid</h2>
+        <p class="muted">
+          <b>Oslo/Fornebu</b> · <b>Søndag 10. mai 2026</b>. Dette er et App Run Event i Oslo-området. :contentReference[oaicite:3]{index=3}
+        </p>
+
+        <div class="grid" style="margin-top:12px;">
+          <div class="col-6">
+            <div class="card">
+              <h3>Oppmøte</h3>
+              <p>[Foreslått] Forneburingen / nærområde. (Bytt til nøyaktig møtested når dere har det.)</p>
+              <p class="muted" style="margin-top:6px;">Tips: legg inn et Google Maps-lenke under.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card">
+              <h3>Starttid</h3>
+              <p><b>[SETT INN LOKAL STARTTID]</b></p>
+              <p class="muted" style="margin-top:6px;">Globalt starter alle samtidig (lokal tid varierer).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-row" style="margin-top:12px;">
+          <a class="btn" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&query=Forneburingen%2C%20Fornebu">
+            Åpne kart →
+          </a>
+          <a class="btn" target="_blank" rel="noopener"
+             href="https://www.wingsforlifeworldrun.com/en/locations/oslo-fornebu">
+            Offisiell event-side →
+          </a>
+        </div>
+      </div>
+
+      <div class="panel col-4">
+        <h2>Klar for løpsdag?</h2>
+        <p class="muted">Kort sjekkliste:</p>
+        <ul class="list">
+          <li class="li"><span class="k">✓</span><div><b>Last ned appen</b><div class="muted">Wings for Life World Run-appen brukes i App Run Events.</div></div></li>
+          <li class="li"><span class="k">✓</span><div><b>Møt opp i tide</b><div class="muted">Hent info, oppvarming, og felles start.</div></div></li>
+          <li class="li"><span class="k">✓</span><div><b>Kle deg smart</b><div class="muted">Mai kan være varm/kjølig – sjekk værmelding.</div></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PÅMELDING / AVGIFT -->
+    <section id="avgift" class="grid">
+      <div class="panel col-6">
+        <h2>Påmelding & avgift</h2>
+        <p class="muted">
+          For å være med betales en <b>påmeldingsavgift</b>, og <b>100% går til ryggmargsforskning</b>. :contentReference[oaicite:4]{index=4}
+        </p>
+        <div class="card" style="margin-top:10px;">
+          <h3>Pris</h3>
+          <p><b>[SETT INN PRIS / “Sjekk pris i påmeldingen”]</b></p>
+          <p class="muted" style="margin-top:6px;">
+            Anbefaling: skriv “Sjekk oppdatert pris i den offisielle påmeldingen” for å unngå feil hvis prisen endrer seg.
+          </p>
+        </div>
+
+        <div class="cta-row" style="margin-top:12px;">
+          <a class="btn btn-primary" href="https://www.wingsforlifeworldrun.com/en/locations/oslo-fornebu" target="_blank" rel="noopener">
+            Gå til påmelding →
+          </a>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="img">
+          <img src="assets/people.jpg" alt="Stemningsbilde fra løp (legg inn ditt bilde)" onerror="this.style.display='none'; this.parentElement.style.minHeight='240px'; this.parentElement.style.display='grid'; this.parentElement.style.placeItems='center'; this.parentElement.style.color='rgba(255,255,255,.7)'; this.parentElement.innerHTML='(Legg inn bilde: assets/people.jpg)';">
+          <div class="cap">🌈 [Bildetekst: Felles start – alle nivåer]</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAM -->
+    <section id="program" class="grid">
+      <div class="panel col-12">
+        <h2>Program (forslag) – Fornebu, 10. mai 2026</h2>
+        <p class="muted">
+          Under er et forslag du kan justere etter bemanning og opplegg. Legg gjerne inn nøyaktig samlingspunkt og starttid.
+        </p>
+
+        <div class="grid" style="margin-top: 10px;">
+          <div class="col-4">
+            <div class="card">
+              <h3>Før start</h3>
+              <ul class="list">
+                <li class="li"><span class="k">11:30</span><div><b>Oppmøte</b><div class="muted">Registrering/info + finn venner/kollegaer.</div></div></li>
+                <li class="li"><span class="k">12:15</span><div><b>Oppvarming</b><div class="muted">Lett felles oppvarming + tips.</div></div></li>
+                <li class="li"><span class="k">12:45</span><div><b>Brief</b><div class="muted">Sikkerhet, rutevalg, app & lyd.</div></div></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="card">
+              <h3>Start & løp</h3>
+              <ul class="list">
+                <li class="li"><span class="k">13:00</span><div><b>Felles start</b><div class="muted">Alle starter samtidig globalt (lokal tid kan bekreftes).</div></div></li>
+                <li class="li"><span class="k">13:30</span><div><b>Catcher Car</b><div class="muted">Virtuell “Catcher Car” starter og jager feltet.</div></div></li>
+                <li class="li"><span class="k">—</span><div><b>Du bestemmer</b><div class="muted">Gå/jogg/løp – stopp når du vil (eller når du blir fanget).</div></div></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="card">
+              <h3>Etter løp</h3>
+              <ul class="list">
+                <li class="li"><span class="k">14:00+</span><div><b>Afterrun</b><div class="muted">High-fives, bilder, og litt sosialt.</div></div></li>
+                <li class="li"><span class="k">15:00</span><div><b>Oppsummering</b><div class="muted">Takk til alle + deling av opplevelser.</div></div></li>
+                <li class="li"><span class="k">—</span><div><b>Del det videre</b><div class="muted">QR-kode/plakat for å få flere med.</div></div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PRAKTISK -->
+    <section id="praktisk" class="grid">
+      <div class="panel col-8">
+        <h2>Praktisk info</h2>
+        <ul class="list">
+          <li class="li"><span class="k">🚆</span><div><b>Transport</b><div class="muted">[Legg inn beste kollektiv/buss/parkering].</div></div></li>
+          <li class="li"><span class="k">💧</span><div><b>Drikke</b><div class="muted">[Legg inn vannstasjoner / ta med egen flaske].</div></div></li>
+          <li class="li"><span class="k">🎒</span><div><b>Bag-drop</b><div class="muted">[Om dere har oppbevaring – skriv her].</div></div></li>
+          <li class="li"><span class="k">♿</span><div><b>Tilgjengelighet</b><div class="muted">App Run Event er oppgitt som tilgjengelig for rullestol. :contentReference[oaicite:5]{index=5}</div></div></li>
+          <li class="li"><span class="k">🌦️</span><div><b>Vær</b><div class="muted">Kle deg lagvis og ta med lett regnjakke ved behov.</div></div></li>
+        </ul>
+      </div>
+
+      <div class="panel col-4">
+        <h2>Del & verv</h2>
+        <p class="muted">Legg inn QR-kode-bilde når du har laget den:</p>
+        <div class="img" style="min-height: 240px;">
+          <img src="assets/qr.png" alt="QR-kode" onerror="this.style.display='none'; this.parentElement.style.display='grid'; this.parentElement.style.placeItems='center'; this.parentElement.style.color='rgba(255,255,255,.7)'; this.parentElement.innerHTML='(Legg inn QR-kode: assets/qr.png)';">
+          <div class="cap">📱 Scan for info</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="grid">
+      <div class="panel col-12">
+        <h2>FAQ</h2>
+        <div class="grid">
+          <div class="col-6">
+            <div class="card">
+              <h3>Må jeg løpe fort?</h3>
+              <p class="muted">Nei. Du kan gå, jogge eller løpe. Poenget er å delta og bidra.</p>
+            </div>
+            <div class="card" style="margin-top:12px;">
+              <h3>Hvordan fungerer “målstreken”?</h3>
+              <p class="muted">Den virtuelle Catcher Car starter etter løpet har begynt og “tar deg igjen”.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card">
+              <h3>Trenger jeg appen?</h3>
+              <p class="muted">Til App Run Events: ja, appen brukes til løpsopplevelsen og tracking.</p>
+            </div>
+            <div class="card" style="margin-top:12px;">
+              <h3>Hvor melder jeg meg på?</h3>
+              <p class="muted">Bruk den offisielle event-siden for Oslo/Fornebu.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> [DIN GRUPPE / TEAMNAVN] · Wings for Life World Run – Oslo/Fornebu</div>
+      <div class="small-links">
+        <a href="https://www.wingsforlifeworldrun.com/en/locations/oslo-fornebu" target="_blank" rel="noopener">Offisiell side</a>
+        ·
+        <a href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Til toppen ↑</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
