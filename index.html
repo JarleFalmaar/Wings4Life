@@ -4,19 +4,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Wings for Life World Run – Fornebu 10. mai 2026</title>
-  <meta name="description" content="Wings for Life World Run 2026 – Fornebu, Oslo. Info om dato, lokasjon og påmeldingsavgift." />
 
   <style>
     :root{
       --bg: #070A12;
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.72);
-      --line: rgba(255,255,255,.14);
-      --accent: #FFD400;
-      --accent2: #7C3AED;
+      --text: rgba(255,255,255,.95);
+      --muted: rgba(255,255,255,.75);
+      --line: rgba(255,255,255,.16);
+      --yellow: #FFD400;
+      --pink: #FF3D7F;
+      --blue: #2F6BFF;
       --radius: 18px;
-      --shadow: 0 18px 50px rgba(0,0,0,.35);
-      --max: 900px;
+      --shadow: 0 20px 70px rgba(0,0,0,.45);
+      --max: 980px;
     }
 
     *{ box-sizing:border-box; }
@@ -25,71 +25,69 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(1100px 700px at 15% -10%, rgba(124,58,237,.55), transparent 60%),
-        radial-gradient(1100px 800px at 90% 0%, rgba(255,212,0,.35), transparent 55%),
+        radial-gradient(900px 600px at 15% -10%, rgba(47,107,255,.45), transparent 60%),
+        radial-gradient(900px 700px at 95% 0%, rgba(255,61,127,.40), transparent 55%),
+        radial-gradient(900px 700px at 55% 115%, rgba(255,212,0,.25), transparent 60%),
         var(--bg);
     }
 
-    .wrap{ max-width: var(--max); margin: 0 auto; padding: 26px 18px; }
-    .card{
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 22px 16px 30px; }
+
+    /* HERO CARD */
+    .hero{
       border: 1px solid var(--line);
-      border-radius: calc(var(--radius) + 6px);
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      border-radius: calc(var(--radius) + 10px);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
       box-shadow: var(--shadow);
-      padding: 22px;
+      overflow:hidden;
     }
 
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight: 850; letter-spacing:.2px;
-      margin-bottom: 14px;
-      color: rgba(255,255,255,.88);
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 16px;
+      padding: 18px;
+      align-items: center;
+    }
+    @media (max-width: 900px){
+      .heroGrid{ grid-template-columns: 1fr; }
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      width: fit-content;
+      font-size: 14px;
+      font-weight: 700;
     }
     .dot{
-      width: 12px; height: 12px; border-radius: 99px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 6px rgba(255,212,0,.08);
+      width:10px; height:10px; border-radius:99px;
+      background: linear-gradient(135deg, var(--yellow), var(--pink));
+      box-shadow: 0 0 0 6px rgba(255,212,0,.10);
     }
 
     h1{
-      margin: 8px 0 10px;
-      font-size: clamp(30px, 4.6vw, 52px);
-      line-height: 1.05;
-      letter-spacing: -0.8px;
+      margin: 12px 0 10px;
+      font-size: clamp(38px, 6vw, 66px);
+      line-height: 0.95;
+      letter-spacing: -1.1px;
+      text-transform: uppercase;
     }
     .lead{
-      margin: 0 0 18px;
+      margin: 0 0 16px;
       color: var(--muted);
       font-size: 18px;
       line-height: 1.6;
       max-width: 60ch;
     }
 
-    .facts{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 14px;
-    }
-    @media (max-width: 820px){
-      .facts{ grid-template-columns: 1fr; }
-    }
-    .fact{
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.06);
-      padding: 14px 14px;
-    }
-    .label{ color: var(--muted); font-size: 13px; margin-bottom: 6px; }
-    .value{ font-weight: 850; font-size: 18px; }
-
-    .cta{
-      display:flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-top: 18px;
-    }
+    .ctaRow{ display:flex; flex-wrap:wrap; gap: 10px; align-items:center; }
     a.btn{
       display:inline-flex;
       align-items:center;
@@ -98,15 +96,81 @@
       border-radius: 999px;
       border: 1px solid var(--line);
       text-decoration:none;
-      font-weight: 800;
+      font-weight: 900;
       background: rgba(255,255,255,.06);
       transition: transform .08s ease, background .15s ease;
     }
     a.btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); }
     a.btn.primary{
       border-color: rgba(255,212,0,.55);
-      background: linear-gradient(135deg, rgba(255,212,0,.95), rgba(255,212,0,.75));
-      color: rgba(0,0,0,.9);
+      background: linear-gradient(135deg, rgba(255,212,0,1), rgba(255,61,127,.85));
+      color: rgba(0,0,0,.92);
+    }
+
+    /* INFO BOXES */
+    .facts{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 900px){
+      .facts{ grid-template-columns: 1fr; }
+    }
+    .fact{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.06);
+      padding: 14px 14px;
+    }
+    .label{ color: var(--muted); font-size: 13px; margin-bottom: 6px; font-weight: 800; letter-spacing:.2px; }
+    .value{ font-weight: 950; font-size: 20px; }
+    .value.small{ font-size: 18px; }
+
+    /* POSTER IMAGE */
+    .poster{
+      border-radius: calc(var(--radius) + 10px);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 16px 45px rgba(0,0,0,.35);
+      position:relative;
+      min-height: 320px;
+    }
+    .poster img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+    .posterNote{
+      position:absolute;
+      left: 12px;
+      bottom: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.20);
+      background: rgba(0,0,0,.45);
+      color: rgba(255,255,255,.92);
+      font-size: 12px;
+      backdrop-filter: blur(6px);
+    }
+
+    /* LOGOS */
+    .logos{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .logoImg{
+      height: 28px;
+      width: auto;
+      opacity: .95;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.25));
     }
 
     footer{
@@ -115,39 +179,71 @@
       font-size: 12px;
       text-align:center;
     }
+
+    /* subtle divider line */
+    .divider{
+      margin-top: 16px;
+      height: 1px;
+      background: rgba(255,255,255,.12);
+    }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <div class="card">
-      <div class="brand"><span class="dot"></span> Wings4Life · Fornebu</div>
+    <div class="hero">
+      <div class="heroGrid">
+        <!-- LEFT: Big title + minimal info -->
+        <div>
+          <div class="badge"><span class="dot"></span> Fornebu · Oslo · 10. mai 2026</div>
+          <h1>LØP FOR DE SOM IKKE KAN</h1>
+          <p class="lead">
+            En enkel side med det du trenger: hvor, når, pris – og lenken til offisiell påmelding.
+          </p>
 
-      <h1>Bli med på Wings for Life World Run</h1>
-      <p class="lead">
-        Vi samles på <b>Fornebu, Oslo</b> og løper sammen <b>10. mai 2026</b>.
-        Trykk på knappen under for offisiell informasjon og påmelding.
-      </p>
+          <div class="ctaRow">
+            <a class="btn primary" href="https://www.wingsforlifeworldrun.com/en/locations/oslo-fornebu" target="_blank" rel="noopener">
+              Offisiell side →
+            </a>
+            <a class="btn" href="https://www.wingsforlifeworldrun.com/" target="_blank" rel="noopener">
+              Wings for Life →
+            </a>
+          </div>
 
-      <div class="facts">
-        <div class="fact">
-          <div class="label">Lokasjon</div>
-          <div class="value">Fornebu, Oslo</div>
-        </div>
-        <div class="fact">
-          <div class="label">Dato</div>
-          <div class="value">10. mai 2026</div>
-        </div>
-        <div class="fact">
-          <div class="label">Påmeldingsavgift</div>
-          <div class="value">[25€”]</div>
-        </div>
-      </div>
+          <div class="facts">
+            <div class="fact">
+              <div class="label">LOKASJON</div>
+              <div class="value">Fornebu, Oslo</div>
+            </div>
+            <div class="fact">
+              <div class="label">DATO</div>
+              <div class="value">10. mai 2026</div>
+            </div>
+            <div class="fact">
+              <div class="label">PÅMELDINGSAVGIFT</div>
+              <div class="value small">25 €</div>
+              <!-- Endre til “Se pris i påmelding” hvis du heller vil -->
+            </div>
+          </div>
 
-      <div class="cta">
-        <a class="btn primary" href="https://www.wingsforlifeworldrun.com/en/locations/oslo-fornebu" target="_blank" rel="noopener">
-          Gå til offisiell side →
-        </a>
+          <div class="divider"></div>
+
+          <!-- Optional logos: upload files to assets/ and the images will show -->
+          <div class="logos">
+            <span>Logoer:</span>
+            <img class="logoImg" src="assets/wfl-logo.png" alt="Wings for Life logo"
+                 onerror="this.style.display='none'">
+            <img class="logoImg" src="assets/redbull-logo.png" alt="Red Bull logo"
+                 onerror="this.style.display='none'">
+            <span style="opacity:.7">(last opp i assets/ om du vil vise dem)</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: Poster / figures -->
+        <div class="poster" aria-label="Plakat">
+          <img src="assets/poster.jpg" alt="Wings4Life-plakat" onerror="this.style.display='none'; this.parentElement.style.minHeight='360px'; this.parentElement.style.display='grid'; this.parentElement.style.placeItems='center'; this.parentElement.style.color='rgba(255,255,255,.7)'; this.parentElement.innerHTML='Last opp bildet som assets/poster.jpg';">
+          <div class="posterNote">🎨 Illustrasjon inspirert av plakaten din</div>
+        </div>
       </div>
     </div>
 
