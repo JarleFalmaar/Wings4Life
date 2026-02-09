@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Wings for Life World Run – Oslo/Fornebu 2026</title>
   <meta name="description" content="Bli med på Wings for Life World Run 2026 i Oslo/Fornebu – vi løper for de som ikke kan. 100% av påmeldingsavgiften går til ryggmargsforskning." />
+<div class="countdown-box">
+  <h2>Nedtelling til Wings for Life World Run 2026</h2>
+  <div id="countdown">Laster nedtelling…</div>
+</div>
 
   <style>
     :root{
