@@ -3,255 +3,124 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Wings for Life World Run – Fornebu 10. mai 2026</title>
+  <title>Wings for Life – Elliot sitt lag</title>
 
   <style>
     :root{
-      --bg: #070A12;
       --text: rgba(255,255,255,.95);
-      --muted: rgba(255,255,255,.75);
-      --line: rgba(255,255,255,.16);
+      --shadow: 0 20px 70px rgba(0,0,0,.55);
+      --radius: 22px;
       --yellow: #FFD400;
       --pink: #FF3D7F;
-      --blue: #2F6BFF;
-      --radius: 18px;
-      --shadow: 0 20px 70px rgba(0,0,0,.45);
-      --max: 980px;
     }
 
-    *{ box-sizing:border-box; }
+    *{ box-sizing: border-box; }
     body{
       margin:0;
+      min-height:100vh;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(900px 600px at 15% -10%, rgba(47,107,255,.45), transparent 60%),
-        radial-gradient(900px 700px at 95% 0%, rgba(255,61,127,.40), transparent 55%),
-        radial-gradient(900px 700px at 55% 115%, rgba(255,212,0,.25), transparent 60%),
-        var(--bg);
-    }
 
-    .wrap{ max-width: var(--max); margin: 0 auto; padding: 22px 16px 30px; }
+      /* Bakgrunnsbilde */
+      background-image:
+        linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.55)),
+        url("assets/poster.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
 
-    /* HERO CARD */
-    .hero{
-      border: 1px solid var(--line);
-      border-radius: calc(var(--radius) + 10px);
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 16px;
-      padding: 18px;
-      align-items: center;
-    }
-    @media (max-width: 900px){
-      .heroGrid{ grid-template-columns: 1fr; }
-    }
-
-    .badge{
-      display:inline-flex;
+      display:flex;
       align-items:center;
-      gap:10px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.06);
-      color: var(--muted);
-      width: fit-content;
-      font-size: 14px;
-      font-weight: 700;
+      justify-content:center;
+      padding: 22px;
+      color: var(--text);
     }
-    .dot{
-      width:10px; height:10px; border-radius:99px;
-      background: linear-gradient(135deg, var(--yellow), var(--pink));
-      box-shadow: 0 0 0 6px rgba(255,212,0,.10);
+
+    .card{
+      width: min(860px, 100%);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: rgba(0,0,0,.55);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(8px);
+      padding: 22px;
     }
 
     h1{
-      margin: 12px 0 10px;
-      font-size: clamp(38px, 6vw, 66px);
-      line-height: 0.95;
-      letter-spacing: -1.1px;
+      margin: 0 0 10px;
+      font-size: clamp(32px, 5.5vw, 62px);
+      line-height: .95;
+      letter-spacing: -1px;
       text-transform: uppercase;
-    }
-    .lead{
-      margin: 0 0 16px;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.6;
-      max-width: 60ch;
+      text-shadow: 0 10px 30px rgba(0,0,0,.55);
     }
 
-    .ctaRow{ display:flex; flex-wrap:wrap; gap: 10px; align-items:center; }
+    p{
+      margin: 0 0 18px;
+      font-size: 18px;
+      line-height: 1.55;
+      max-width: 60ch;
+      text-shadow: 0 10px 26px rgba(0,0,0,.55);
+    }
+
+    .cta{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items:center;
+    }
+
     a.btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       padding: 12px 16px;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      text-decoration:none;
       font-weight: 900;
-      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      border: 1px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.08);
+      color: var(--text);
       transition: transform .08s ease, background .15s ease;
     }
-    a.btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); }
+    a.btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.12); }
+
     a.btn.primary{
-      border-color: rgba(255,212,0,.55);
-      background: linear-gradient(135deg, rgba(255,212,0,1), rgba(255,61,127,.85));
+      background: linear-gradient(135deg, var(--yellow), var(--pink));
       color: rgba(0,0,0,.92);
+      border: none;
     }
 
-    /* INFO BOXES */
-    .facts{
-      margin-top: 14px;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    @media (max-width: 900px){
-      .facts{ grid-template-columns: 1fr; }
-    }
-    .fact{
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.06);
-      padding: 14px 14px;
-    }
-    .label{ color: var(--muted); font-size: 13px; margin-bottom: 6px; font-weight: 800; letter-spacing:.2px; }
-    .value{ font-weight: 950; font-size: 20px; }
-    .value.small{ font-size: 18px; }
-
-    /* POSTER IMAGE */
-    .poster{
-      border-radius: calc(var(--radius) + 10px);
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.04);
-      box-shadow: 0 16px 45px rgba(0,0,0,.35);
-      position:relative;
-      min-height: 320px;
-    }
-    .poster img{
-      width:100%;
-      height:100%;
-      object-fit: cover;
-      display:block;
-    }
-    .posterNote{
-      position:absolute;
-      left: 12px;
-      bottom: 12px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.20);
-      background: rgba(0,0,0,.45);
-      color: rgba(255,255,255,.92);
+    .small{
+      margin-top: 12px;
       font-size: 12px;
-      backdrop-filter: blur(6px);
-    }
-
-    /* LOGOS */
-    .logos{
-      display:flex;
-      gap: 10px;
-      align-items:center;
-      flex-wrap:wrap;
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-    .logoImg{
-      height: 28px;
-      width: auto;
-      opacity: .95;
-      filter: drop-shadow(0 10px 18px rgba(0,0,0,.25));
-    }
-
-    footer{
-      margin-top: 14px;
-      color: rgba(255,255,255,.55);
-      font-size: 12px;
-      text-align:center;
-    }
-
-    /* subtle divider line */
-    .divider{
-      margin-top: 16px;
-      height: 1px;
-      background: rgba(255,255,255,.12);
+      opacity: .75;
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="hero">
-      <div class="heroGrid">
-        <!-- LEFT: Big title + minimal info -->
-        <div>
-          <div class="badge"><span class="dot"></span> Fornebu · Oslo · 10. mai 2026</div>
-          <h1>LØP FOR DE SOM IKKE KAN</h1>
-          <p class="lead">
-            En enkel side med det du trenger: hvor, når, pris – og lenken til offisiell påmelding.
-          </p>
+  <main class="card">
+    <h1>LØP FOR DE SOM IKKE KAN</h1>
 
-          <div class="ctaRow">
-            <a class="btn primary" href="https://www.wingsforlifeworldrun.com/en/locations/oslo-fornebu" target="_blank" rel="noopener">
-              Offisiell side →
-            </a>
-            <a class="btn" href="https://www.wingsforlifeworldrun.com/" target="_blank" rel="noopener">
-              Wings for Life →
-            </a>
-          </div>
+    <p><b>Meld deg på laget til min gode venn Elliot Finnestrand</b></p>
 
-          <div class="facts">
-            <div class="fact">
-              <div class="label">LOKASJON</div>
-              <div class="value">Fornebu, Oslo</div>
-            </div>
-            <div class="fact">
-              <div class="label">DATO</div>
-              <div class="value">10. mai 2026</div>
-            </div>
-            <div class="fact">
-              <div class="label">PÅMELDINGSAVGIFT</div>
-              <div class="value small">25 €</div>
-              <!-- Endre til “Se pris i påmelding” hvis du heller vil -->
-            </div>
-          </div>
+    <div class="cta">
+      <a class="btn primary"
+         href="https://www.wingsforlifeworldrun.com/en/locations/oslo-fornebu"
+         target="_blank" rel="noopener">
+        Påmelding / offisiell side →
+      </a>
 
-          <div class="divider"></div>
-
-          <!-- Optional logos: upload files to assets/ and the images will show -->
-          <div class="logos">
-            <span>Logoer:</span>
-            <img class="logoImg" src="assets/wfl-logo.png" alt="Wings for Life logo"
-                 onerror="this.style.display='none'">
-            <img class="logoImg" src="assets/redbull-logo.png" alt="Red Bull logo"
-                 onerror="this.style.display='none'">
-            <span style="opacity:.7">(last opp i assets/ om du vil vise dem)</span>
-          </div>
-        </div>
-
-        <!-- RIGHT: Poster / figures -->
-        <div class="poster" aria-label="Plakat">
-          <img src="assets/poster.jpg" alt="Wings4Life-plakat" onerror="this.style.display='none'; this.parentElement.style.minHeight='360px'; this.parentElement.style.display='grid'; this.parentElement.style.placeItems='center'; this.parentElement.style.color='rgba(255,255,255,.7)'; this.parentElement.innerHTML='Last opp bildet som assets/poster.jpg';">
-          <div class="posterNote">🎨 Illustrasjon inspirert av plakaten din</div>
-        </div>
-      </div>
+      <a class="btn"
+         href="https://www.wingsforlifeworldrun.com/"
+         target="_blank" rel="noopener">
+        Wings for Life →
+      </a>
     </div>
 
-    <footer>© <span id="year"></span> Wings4Life</footer>
-  </div>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    <div class="small">
+      Hvis bakgrunnen ikke vises: sjekk at bildet ligger som <code>assets/poster.jpg</code>.
+    </div>
+  </main>
 </body>
 </html>
